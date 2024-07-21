@@ -16,3 +16,9 @@ body {
   display: flex;
   flex: 1;
 }
+.hovered{
+    background-color: black;
+}
+.new{
+    background-color: white;
+}
