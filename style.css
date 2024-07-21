@@ -6,9 +6,10 @@ body {
   min-height: 100vh;
   gap: 2rem;
 }
-.buttons{
-margin-top: 1rem;
+.buttons {
+  margin-top: 1rem;
 }
+
 .block {
   border: 1px solid black;
   flex: 1;

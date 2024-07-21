@@ -14,6 +14,7 @@ function createGrid(size) {
     }
     container.appendChild(row);
   }
+
   // add event listeners to blocks to color them
   let blocks = document.querySelectorAll(".block");
   blocks.forEach((element) =>
@@ -35,6 +36,7 @@ function createGrid(size) {
     })
   );
 }
+
 // event listener for size button
 document.querySelector("#size-btn").addEventListener("click", () => {
   input = document.querySelector("#size-input").value;
@@ -54,6 +56,7 @@ document.querySelector("#rainbow-btn").addEventListener("click", () => {
 //create initial grid
 createGrid(gridSize);
 
+//Check if string is a parsable number
 function isNumeric(str) {
   return (
     !isNaN(str) && 
