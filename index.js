@@ -37,7 +37,10 @@ function createGrid(size) {
 }
 // event listener for size button
 document.querySelector("#size-btn").addEventListener("click", () => {
-  gridSize = prompt("Enter grid size");
+  input = document.querySelector("#size-input").value;
+  if (isNumeric(input)) {
+    gridSize = input < 100 ? input : 100;
+  }
   createGrid(gridSize);
 });
 // event listener for reset button
@@ -50,3 +53,10 @@ document.querySelector("#rainbow-btn").addEventListener("click", () => {
 });
 //create initial grid
 createGrid(gridSize);
+
+function isNumeric(str) {
+  return (
+    !isNaN(str) && 
+    !isNaN(parseFloat(str))
+  ); 
+}
