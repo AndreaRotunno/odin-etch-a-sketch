@@ -16,8 +16,8 @@ margin-top: 1rem;
 .container {
   display: flex;
   flex-direction: column;
-  width: 960px;
-  height: 960px;
+  width: 80vmin;
+  height: 80vmin;
 }
 .row {
   display: flex;
