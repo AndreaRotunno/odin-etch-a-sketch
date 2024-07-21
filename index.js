@@ -19,19 +19,22 @@ function createGrid(size) {
   let blocks = document.querySelectorAll(".block");
   blocks.forEach((element) =>
     element.addEventListener("mouseover", (e) => {
-      // If rainbow mode is on, randomize the RGB background
-      if (rainbowMode) {
-        let red = Math.floor(Math.random() * 256);
-        let green = Math.floor(Math.random() * 256);
-        let blue = Math.floor(Math.random() * 256);
-        e.target.classList.remove("new");
-        e.target.style.backgroundColor =
-          "rgb(" + red + "," + green + "," + blue + ")";
-        console.log(e.target.style.backgroundColor);
-      } else {
-        // Otherwise, color them black
-        e.target.classList.add("hovered");
-        e.target.classList.remove("new");
+      //check if the left mouse button is held down
+      if (e.buttons == 1 || e.buttons == 3) {
+        if (rainbowMode) {
+          // If rainbow mode is on, randomize the RGB background
+          let red = Math.floor(Math.random() * 256);
+          let green = Math.floor(Math.random() * 256);
+          let blue = Math.floor(Math.random() * 256);
+          e.target.classList.remove("new");
+          e.target.style.backgroundColor =
+            "rgb(" + red + "," + green + "," + blue + ")";
+          console.log(e.target.style.backgroundColor);
+        } else {
+          // Otherwise, color them black
+          e.target.classList.add("hovered");
+          e.target.classList.remove("new");
+        }
       }
     })
   );
@@ -58,8 +61,5 @@ createGrid(gridSize);
 
 //Check if string is a parsable number
 function isNumeric(str) {
-  return (
-    !isNaN(str) && 
-    !isNaN(parseFloat(str))
-  ); 
+  return !isNaN(str) && !isNaN(parseFloat(str));
 }
