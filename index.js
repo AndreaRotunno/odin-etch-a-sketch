@@ -29,7 +29,6 @@ function createGrid(size) {
           e.target.classList.remove("new");
           e.target.style.backgroundColor =
             "rgb(" + red + "," + green + "," + blue + ")";
-          console.log(e.target.style.backgroundColor);
         } else {
           // Otherwise, color them black
           e.target.classList.add("hovered");
