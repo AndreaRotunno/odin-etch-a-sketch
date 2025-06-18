@@ -5,8 +5,12 @@ let gridSize = 16;
 //check if LMB is held down
 let mouseDown = false;
 document.body.addEventListener("mousedown", (e) => {
-  if (e.button === 0) mouseDown = true;
+  if (e.button === 0) {
+    e.preventDefault();
+    mouseDown = true;
+  }
 });
+
 document.body.addEventListener("mouseup", () => {
   mouseDown = false;
 });
@@ -20,6 +24,8 @@ function createGrid(size) {
     for (let j = 0; j < size; j++) {
       let block = document.createElement("div");
       block.classList.add("block", "new");
+      block.setAttribute("draggable", "false");
+      block.addEventListener("dragstart", (e) => e.preventDefault());
       row.appendChild(block);
     }
     container.appendChild(row);
@@ -29,7 +35,8 @@ function createGrid(size) {
   let blocks = document.querySelectorAll(".block");
   blocks.forEach((element) =>
     element.addEventListener("mouseover", (e) => {
-      if(!mouseDown) return
+      if(!mouseDown) return;
+
       if (rainbowMode) {
         // If rainbow mode is on, randomize the RGB background
         let red = Math.floor(Math.random() * 256);
