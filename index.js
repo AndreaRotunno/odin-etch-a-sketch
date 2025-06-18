@@ -1,6 +1,16 @@
 const container = document.querySelector(".container");
 let rainbowMode = false;
 let gridSize = 16;
+
+//check if LMB is held down
+let mouseDown = false;
+document.body.addEventListener("mousedown", (e) => {
+  if (e.button === 0) mouseDown = true;
+});
+document.body.addEventListener("mouseup", () => {
+  mouseDown = false;
+});
+
 // Create grid given a size and clear the old one if applicable
 function createGrid(size) {
   container.innerHTML = "";
@@ -19,6 +29,7 @@ function createGrid(size) {
   let blocks = document.querySelectorAll(".block");
   blocks.forEach((element) =>
     element.addEventListener("mouseover", (e) => {
+      if(!mouseDown) return
       if (rainbowMode) {
         // If rainbow mode is on, randomize the RGB background
         let red = Math.floor(Math.random() * 256);
